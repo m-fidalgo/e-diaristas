@@ -6,9 +6,11 @@
 <h3>Funcionalidades</h3>
 <p>:hourglass_flowing_sand: Cadastrar, alterar e excluir profissionais</p>
 <p>:hourglass_flowing_sand: Listar de profissionais a partir de um CEP</p>
+
 <h3>Tecnologias</h3>
+
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-
+![Axios](https://img.shields.io/badge/Axios-5a29e4?style=for-the-badge)
 ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=material-ui&logoColor=white)
