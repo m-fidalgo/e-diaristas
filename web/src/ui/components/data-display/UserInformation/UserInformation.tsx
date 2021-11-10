@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 import {
   UserInformationContainer,
   UserName,
   UserDescription,
   AvatarStyled,
   RatingStyled,
-} from "./UserInformation.style";
+} from './UserInformation.style';
 
 interface UserInformationProps {
   img?: string;
@@ -19,7 +19,7 @@ const UserInformation: React.FC<UserInformationProps> = (props) => {
     <UserInformationContainer>
       <AvatarStyled src={props.img}>{props.name[0]}</AvatarStyled>
       <UserName>{props.name}</UserName>
-      <RatingStyled readOnly value={props.rating} />
+      <RatingStyled readOnly value={props.rating || 0} />
       <UserDescription>{props.description}</UserDescription>
     </UserInformationContainer>
   );

@@ -1,12 +1,25 @@
 import type { NextPage } from 'next';
+import { Button, Container, Typography, CircularProgress } from '@mui/material';
+import { FormElementsContainer, ProfessionalsContainer, ProfessionalsPaper } from '@styles/pages/index.style';
 import SafeEnvironment from '@components/feedback/SafeEnvironment/SafeEnvironment';
 import PageTitle from '@components/data-display/PageTitle/PageTitle';
 import UserInformation from '@components/data-display/UserInformation/UserInformation';
 import TextFieldMask from '@components/inputs/TextFieldMask/TextFieldMask';
-import { Button, Container, Typography } from '@mui/material';
-import { FormElementsContainer, ProfessionalsContainer, ProfessionalsPaper } from '@styles/pages/index.style';
+import useIndex from 'data/hooks/pages/useIndex.page';
 
 const Home: NextPage = () => {
+  const {
+    cep,
+    setCep,
+    validCep,
+    searchProfessionals,
+    error,
+    professionals,
+    isSearchDone,
+    isLoading,
+    professionalsRemaining,
+  } = useIndex();
+
   return (
     <div>
       <SafeEnvironment />
@@ -16,24 +29,61 @@ const Home: NextPage = () => {
       />
       <Container>
         <FormElementsContainer>
-          <TextFieldMask mask={'99.999-999'} variant='outlined' label='Digite seu CEP' fullWidth />
-          <Typography color='error'>CEP inválido</Typography>
-          <Button variant='contained' color='secondary' sx={{ width: '220px' }}>
-            Buscar
+          <TextFieldMask
+            mask={'99.999-999'}
+            variant='outlined'
+            label='Digite seu CEP'
+            fullWidth
+            value={cep}
+            onChange={(event) => setCep(event.target.value)}
+          />
+
+          {error && <Typography color='error'>{error}</Typography>}
+
+          <Button
+            variant='contained'
+            color='secondary'
+            sx={{ width: '220px' }}
+            disabled={!validCep || isLoading}
+            onClick={() => searchProfessionals(cep)}
+          >
+            {isLoading ? <CircularProgress size={20} /> : 'Buscar'}
           </Button>
         </FormElementsContainer>
-        <ProfessionalsPaper>
-          <ProfessionalsContainer>
-            <UserInformation name='Maira' img='https://github.com/m-fidalgo.png' rating={4} description='Cidade' />
-            <UserInformation name='Outra' rating={4} description='Cidade' />
-            <UserInformation name='Maira' img='https://github.com/m-fidalgo.png' rating={4} description='Cidade' />
-            <UserInformation name='Outra' rating={4} description='Cidade' />
-            <UserInformation name='Maira' img='https://github.com/m-fidalgo.png' rating={4} description='Cidade' />
-            <UserInformation name='Outra' rating={4} description='Cidade' />
-            <UserInformation name='Maira' img='https://github.com/m-fidalgo.png' rating={4} description='Cidade' />
-            <UserInformation name='Outra' rating={4} description='Cidade' />
-          </ProfessionalsContainer>
-        </ProfessionalsPaper>
+
+        {isSearchDone &&
+          (professionals.length > 0 ? (
+            <ProfessionalsPaper>
+              <ProfessionalsContainer>
+                {professionals.map((item, index) => {
+                  return (
+                    <UserInformation
+                      key={index}
+                      img={item.foto_usuario}
+                      name={item.nome_completo}
+                      rating={item.reputacao}
+                      description={item.cidade}
+                    />
+                  );
+                })}
+              </ProfessionalsContainer>
+              <Container sx={{ textAlign: 'center' }}>
+                {professionalsRemaining > 0 && (
+                  <Typography sx={{ mt: 5 }}>
+                    ... e mais {professionalsRemaining}{' '}
+                    {professionalsRemaining > 1 ? 'profissionais atendem' : 'profissional atende'} ao seu endereço.
+                  </Typography>
+                )}
+                <Button variant='contained' color='secondary' sx={{ mt: 5 }}>
+                  Contratar um profissional
+                </Button>
+              </Container>
+            </ProfessionalsPaper>
+          ) : (
+            <Typography align='center' color='textPrimary' sx={{ mb: 10 }}>
+              Ainda não temos profissionais disponíveis em sua região :(
+            </Typography>
+          ))}
       </Container>
     </div>
   );
