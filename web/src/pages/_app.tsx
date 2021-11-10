@@ -1,9 +1,11 @@
-import "@styles/globals.css";
-import type { AppProps } from "next/app";
-import { ThemeProvider } from "@mui/material";
-import theme from "ui/themes/theme";
-import Head from "next/head";
-import Header from "@components/surfaces/Header/Header";
+import '@styles/globals.css';
+import type { AppProps } from 'next/app';
+import { ThemeProvider } from '@mui/material';
+import theme from 'ui/themes/theme';
+import Head from 'next/head';
+import { AppContainer } from '@styles/pages/_app.style';
+import Header from '@components/surfaces/Header/Header';
+import Footer from '@components/surfaces/Footer/Footer';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -19,8 +21,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link href='/fonts/tw-icons/css/treinaweb-icons.css' rel='stylesheet' />
       </Head>
       <ThemeProvider theme={theme}>
-        <Header />
-        <Component {...pageProps} />
+        <AppContainer>
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </AppContainer>
       </ThemeProvider>
     </>
   );
