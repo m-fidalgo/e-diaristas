@@ -12,14 +12,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark md-4 mb-5 px-5">
-      <a href="#" class="navbar-brand">E-diaristas</a>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a href="{% url 'get_professionals' %}" class="nav link">Home</a>
-          </li>
-        </ul>
-      </div>
+      <a href="{% url 'get_professionals' %}" class="navbar-brand">E-diaristas</a>
     </nav>
     <main role="main" class="container">{% block content %} {% endblock content%}</main>
     <script
