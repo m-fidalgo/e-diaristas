@@ -21,5 +21,6 @@ from django.conf import settings
 # add nosso arquivo de urls a uma rota base
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('e-diaristas/admin/', include('web_admin.urls'))
+    path('web-admin/', include('web_admin.urls')),
+    path('api/', include("api.urls"))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

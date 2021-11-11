@@ -13,7 +13,7 @@ class ProfessionalsForm(forms.ModelForm):
   class Meta:
     model = Professionals
     # renderizar todos os campos menos esses 
-    exclude = {"address", "complement", "county", "state", "ibge_code",}
+    exclude = {"address", "complement", "county", "state", "city", "ibge_code",}
     
   def clean_cpf(self):
     cpf = self.cleaned_data["cpf"]
@@ -43,6 +43,7 @@ class ProfessionalsForm(forms.ModelForm):
     instance.complement = api_response['complemento']
     instance.county = api_response['bairro']
     instance.state = api_response['uf']
+    instance.city = api_response['localidade']
     instance.ibge_code = api_response['ibge']
     instance.save()
     return instance
