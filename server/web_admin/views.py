@@ -5,6 +5,7 @@ from .models import Professionals
 def insert_professionals(request):
   if request.method == 'POST':
     form = professionals_form.ProfessionalsForm(request.POST, request.FILES)
+    
     if form.is_valid():
       # se os dados inseridos forem válidos, serão persistidos no bd
       form.save()
