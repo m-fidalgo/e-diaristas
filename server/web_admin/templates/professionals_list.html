@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% load easy_mask %} {% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>CEP</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for professional in professionals %}
+    <tr>
+      <td>{{professional.id}}</td>
+      <td>{{professional.full_name}}</td>
+      <td>{{professional.email}}</td>
+      <td>{{professional.zip_code | cep}}</td>
+      <td>
+        <a href="{% url 'update_professionals' professional.id %}" class="btn btn-secondary">Editar</a>
+        <a href="{% url 'delete_professionals' professional.id %}" class="btn btn-danger">Remover</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a href="{% url 'insert_professionals' %}" class="btn btn-primary my-5">Cadastrar</a>
+{% endblock content %}

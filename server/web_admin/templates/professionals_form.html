@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+<form method="post" enctype="multipart/form-data">
+  <!-- token de identificação do form - reconhecimento do django -->
+  {% csrf_token %}
+
+  <!-- exibir o form como parágrafo -->
+  {{professionals_form|crispy}}
+
+  <button type="submit" class="btn btn-primary my-5">Enviar</button>
+</form>
+{% endblock content %}
