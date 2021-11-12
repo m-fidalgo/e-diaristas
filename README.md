@@ -9,7 +9,7 @@
 
 <h3>Funcionalidades</h3>
 <p>:heavy_check_mark: Cadastrar, alterar e excluir profissionais</p>
-<p>:hourglass_flowing_sand: Listar profissionais a partir de um CEP</p>
+<p>:heavy_check_mark: Listar profissionais a partir de um CEP</p>
 
 <h3>Tecnologias</h3>
 
