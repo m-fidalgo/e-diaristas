@@ -14,7 +14,7 @@ export default function useIndex() {
     [professionals, setProfessionals] = useState([] as UserInterface[]),
     [professionalsRemaining, setProfessionalsRemaining] = useState(0);
 
-  async function searchProfessionals(cep: string) {
+  async function searchProfessionals(zipCode: string) {
     setIsSearchDone(false);
     setIsLoading(true);
     setError('');

@@ -1,6 +1,10 @@
 import type { NextPage } from 'next';
 import { Button, Container, Typography, CircularProgress } from '@mui/material';
-import { FormElementsContainer, ProfessionalsContainer, ProfessionalsPaper } from '@styles/pages/index.style';
+import {
+  FormElementsContainer,
+  ProfessionalsContainer,
+  ProfessionalsPaper,
+} from '@styles/pages/index.style';
 import SafeEnvironment from '@components/feedback/SafeEnvironment/SafeEnvironment';
 import PageTitle from '@components/data-display/PageTitle/PageTitle';
 import UserInformation from '@components/data-display/UserInformation/UserInformation';
@@ -9,9 +13,9 @@ import useIndex from 'data/hooks/pages/useIndex.page';
 
 const Home: NextPage = () => {
   const {
-    cep,
-    setCep,
-    validCep,
+    zipCode,
+    setZipCode,
+    validZipCode,
     searchProfessionals,
     error,
     professionals,
@@ -34,8 +38,8 @@ const Home: NextPage = () => {
             variant='outlined'
             label='Digite seu CEP'
             fullWidth
-            value={cep}
-            onChange={(event) => setCep(event.target.value)}
+            value={zipCode}
+            onChange={(event) => setZipCode(event.target.value)}
           />
 
           {error && <Typography color='error'>{error}</Typography>}
@@ -44,8 +48,8 @@ const Home: NextPage = () => {
             variant='contained'
             color='secondary'
             sx={{ width: '220px' }}
-            disabled={!validCep || isLoading}
-            onClick={() => searchProfessionals(cep)}
+            disabled={!validZipCode || isLoading}
+            onClick={() => searchProfessionals(zipCode)}
           >
             {isLoading ? <CircularProgress size={20} /> : 'Buscar'}
           </Button>
@@ -71,7 +75,10 @@ const Home: NextPage = () => {
                 {professionalsRemaining > 0 && (
                   <Typography sx={{ mt: 5 }}>
                     ... e mais {professionalsRemaining}{' '}
-                    {professionalsRemaining > 1 ? 'profissionais atendem' : 'profissional atende'} ao seu endereço.
+                    {professionalsRemaining > 1
+                      ? 'profissionais atendem'
+                      : 'profissional atende'}{' '}
+                    ao seu endereço.
                   </Typography>
                 )}
                 <Button variant='contained' color='secondary' sx={{ mt: 5 }}>

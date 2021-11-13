@@ -1,6 +1,6 @@
 export const ValidationService = {
-  cep(cep = '') {
+  zipCode(zipCode = '') {
     // substitui td que não é dígito por uma string vazia
-    return cep.replace(/\D/g, '').length === 8;
+    return zipCode.replace(/\D/g, '').length === 8;
   },
 };
