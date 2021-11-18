@@ -80,10 +80,10 @@ const FindProfessionals: React.FC = () => {
               return (
                 <UserInformation
                   key={index}
-                  name={item.nome_completo}
-                  rating={item.reputacao || 0}
-                  img={item.foto_usuario}
-                  description={item.cidade}
+                  name={item.full_name}
+                  rating={item.rating || 0}
+                  img={item.user_picture}
+                  description={item.city}
                   darker={index % 2 === 1}
                 />
               );

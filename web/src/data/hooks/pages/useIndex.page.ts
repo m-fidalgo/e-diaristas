@@ -21,11 +21,11 @@ export default function useIndex() {
 
     try {
       const { data } = await ApiService.get<{
-        diaristas: UserInterface[];
-        quantidade_diaristas: number;
+        professionals: UserInterface[];
+        professionals_quantity: number;
       }>('/api/diaristas-cidade?cep=' + zipCode.replace(/\D/g, ''));
-      setProfessionals(data.diaristas);
-      setProfessionalsRemaining(data.quantidade_diaristas);
+      setProfessionals(data.professionals);
+      setProfessionalsRemaining(data.professionals_quantity);
       setIsSearchDone(true);
     } catch (error) {
       setError('CEP não encontrado');

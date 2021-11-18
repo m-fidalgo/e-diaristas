@@ -63,10 +63,10 @@ const Home: NextPage = () => {
                   return (
                     <UserInformation
                       key={index}
-                      img={item.foto_usuario}
-                      name={item.nome_completo}
-                      rating={item.reputacao}
-                      description={item.cidade}
+                      img={item.user_picture}
+                      name={item.full_name}
+                      rating={item.rating}
+                      description={item.city}
                     />
                   );
                 })}
