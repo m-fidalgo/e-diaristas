@@ -5,7 +5,7 @@
 
 <h3>Acesso</h3>
 <p>Clique <a href="https://e-diaristas-mf.vercel.app/">aqui</a> para visualizar a versão para web</p>
-<p>OBS: O CEP 01.001-000 tem profissionais cadastrados :)</p>
+<p>OBS: O CEP 12.243-330 tem profissionais cadastrados :)</p>
 
 <h3>Funcionalidades</h3>
 <p>:heavy_check_mark: Cadastrar, alterar e excluir profissionais</p>
